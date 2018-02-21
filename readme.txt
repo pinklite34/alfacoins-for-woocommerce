@@ -2,7 +2,7 @@
 Contributors: alfacoins
 Tags: bitcoin, ethereum, litecoin, alfacoins, payment gateway, woocommerce, btc, xbt, ltc, eth, bitcoin cash, bitcoincash, dash, ripple, bch, xrp
 Requires at least: 4.3.1
-Tested up to: 4.7.2
+Tested up to: 4.9.4
 Stable tag: 0.4
 License: MIT
 License URI: https://raw.githubusercontent.com/alfacoins/woocommerce/master/license.txt

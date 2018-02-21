@@ -48,4 +48,4 @@ Download the plugin and upload it to your webserver via the [directions found at
 
 ### 5. The settings page for this plugin
 
-![s5](https://raw.githubusercontent.com/alfacoins/woocommerce/master/assets/screenshot-1.jpg)
+![s5](https://raw.githubusercontent.com/alfacoins/woocommerce/master/assets/screenshot-5.jpg)
