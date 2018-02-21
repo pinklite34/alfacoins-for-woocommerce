@@ -2,11 +2,11 @@
 /*
     Plugin Name: ALFAcoins for WooCommerce
     Plugin URI:  https://wordpress.org/plugins/alfacoins-for-woocommerce/
-    Description: Enable your WooCommerce store to accept Bitcoin, Litecoin and Ethereum with ALFAcoins.
+    Description: Enable your WooCommerce store to accept Bitcoin, Litecoin, Ethereum, Bitcoin Cash, Dash and Ripple with ALFAcoins.
     Author:      alfacoins
     Author URI:  https://github.com/alfacoins
 
-    Version:           0.3
+    Version:           0.4
     License:           Copyright 2013-2017 ALFAcoins Inc., MIT License
  */
 
@@ -41,7 +41,7 @@ function woocommerce_alfacoins_init() {
       $this->has_fields = FALSE;
       $this->order_button_text = __('Pay with ALFAcoins', 'alfacoins');
       $this->method_title = 'ALFAcoins';
-      $this->method_description = 'ALFAcoins allows you to accept bitcoin, litecoin and ethereum payments on your WooCommerce store.';
+      $this->method_description = 'ALFAcoins allows you to accept bitcoin, litecoin, ethereum, bitcoin cash, dash and ripple payments on your WooCommerce store.';
 
       // Load the settings.
       $this->init_form_fields();
@@ -57,11 +57,9 @@ function woocommerce_alfacoins_init() {
       $this->api_name = $this->settings['api_name'];
       $this->api_secret_key = $this->settings['api_secret_key'];
       $this->api_password = $this->settings['api_password'];
-      $this->api_type = $this->settings['api_type'];
+      $this->api_type_new = $this->settings['api_type_new'];
       $this->api_url = $this->settings['api_url'];
-      $this->api_type = $this->settings['api_type'];
-
-
+      
       // Define debugging & informational settings
       $this->debug_php_version = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
       $this->debug_plugin_version = get_option('woocommerce_alfacoins_version');
@@ -71,6 +69,7 @@ function woocommerce_alfacoins_init() {
       $this->log('    [Info] $this->api_secret_key     = ' . $this->api_secret_key);
       $this->log('    [Info] $this->api_password       = ' . $this->api_password);
       $this->log('    [Info] $this->api_url           = ' . $this->api_url);
+      $this->log('    [Info] $this->api_type_new           = ' . $this->api_type_new);
 
       // Actions
       add_action('woocommerce_update_options_payment_gateways_' . $this->id, array(
@@ -108,7 +107,7 @@ function woocommerce_alfacoins_init() {
       if (empty($this->api_name) ||
         empty($this->api_secret_key) ||
         empty($this->api_password) ||
-        empty($this->api_type)
+        empty($this->api_type_new)
       ) {
         return FALSE;
       }
@@ -185,7 +184,7 @@ function woocommerce_alfacoins_init() {
           'placeholder' => __('UPPERCASE MD5 of API Password', 'alfacoins'),
           'desc_tip' => TRUE,
         ),
-        'api_type' => array(
+        'api_type_new' => array(
           'title' => __('Default coin', 'alfacoins'),
           'type' => 'select',
           'default' => 'bitcoin',
@@ -193,7 +192,10 @@ function woocommerce_alfacoins_init() {
           'options' => array(
             'bitcoin' => 'Bitcoin',
             'litecoin' => 'Litecoin',
-            'ethereum' => 'Ethereum'
+            'ethereum' => 'Ethereum',
+            'bitcoincash' => 'Bitcoin Cash',
+            'dash' => 'Dash',
+            'ripple' => 'Ripple'
           ),
           'desc_tip' => TRUE,
         ),
@@ -352,14 +354,17 @@ function woocommerce_alfacoins_init() {
     /**
      * Validate API Type (Default Coin)
      */
-    public function validate_api_type_field($key) {
+    public function validate_api_type_new_field($key) {
       $type = $this->get_option($key);
       if (isset($_POST[$this->plugin_id . $this->id . '_' . $key])) {
-        if (!in_array($_POST[$this->plugin_id . $this->id . '_' . $key], array('bitcoin', 'litecoin', 'ethereum'))) {
+        if (!in_array($_POST[$this->plugin_id . $this->id . '_' . $key], array('bitcoin', 'litecoin', 'ethereum', 'bitcoincash', 'dash', 'ripple'))) {
           $type = 'bitcoin';
+        } else {
+          $type = $_POST[$this->plugin_id . $this->id . '_' . $key];
         }
       }
       return sanitize_text_field($type);
+      
     }
 
     /**
@@ -581,7 +586,7 @@ function woocommerce_alfacoins_init() {
         'name' => $this->api_name,
         'secret_key' => $this->api_secret_key,
         'password' => $this->api_password,
-        'type' => $this->api_type,
+        'type' => $this->api_type_new,
         'amount' => $order->calculate_totals(), // must be float
         'order_id' => $order->get_order_number(),
         'description' => $description,
@@ -727,7 +732,7 @@ function woocommerce_alfacoins_init() {
 
                 break;
 
-              // The complete status is when the Bitcoin network
+              // The complete status is when the Cryptocurrency network
               // obtains 6 confirmations for this transaction.
               case 'completed':
 
@@ -769,7 +774,7 @@ function woocommerce_alfacoins_init() {
                 else {
                   $this->log('    [Info] This order has a problem so setting "cancelled" status...');
 
-                  $order->update_status($order_states['cancelled'], __('Bitcoin payment is expired for this order! The payment was not confirmed by the network within 1 hour. Do not ship the product for this order!', 'alfacoins'));
+                  $order->update_status($order_states['cancelled'], __('Payment is expired for this order! The payment was not confirmed by the network within 1 hour. Do not ship the product for this order!', 'alfacoins'));
                 }
 
                 break;
@@ -919,7 +924,7 @@ function woocommerce_alfacoins_activate() {
 
   // Requirements met, activate the plugin
   if ($failed === FALSE) {
-    update_option('woocommerce_alfacoins_version', '0.3');
+    update_option('woocommerce_alfacoins_version', '0.4');
   }
   else {
     // Requirements not met, return an error message
