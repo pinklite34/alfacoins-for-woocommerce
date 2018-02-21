@@ -32,20 +32,20 @@ Download the plugin and upload it to your webserver via the [directions found at
 
 ### 1. When selected, this is how the payment option will appear
 
-![s1](https://raw.githubusercontent.com/alfacoins/woocommerce/master/assets/screenshot-1.jpg)
+![s1](https://raw.githubusercontent.com/alfacoins/woocommerce/master/assets/screenshot-1.png)
 
 ### 2. This is the ALFAcoins invoice page a customer will be sent to during checkout after selecting this plugin's payment option
 
-![s2](https://raw.githubusercontent.com/alfacoins/woocommerce/master/assets/screenshot-2.jpg)
+![s2](https://raw.githubusercontent.com/alfacoins/woocommerce/master/assets/screenshot-2.png)
 
 ### 3. After customer have paid, he will be prompted to return to your site
 
-![s3](https://raw.githubusercontent.com/alfacoins/woocommerce/master/assets/screenshot-3.jpg)
+![s3](https://raw.githubusercontent.com/alfacoins/woocommerce/master/assets/screenshot-3.png)
 
 ### 4. The checkout will indicate they paid with Cryptocurrency
 
-![s4](https://raw.githubusercontent.com/alfacoins/woocommerce/master/assets/screenshot-4.jpg)
+![s4](https://raw.githubusercontent.com/alfacoins/woocommerce/master/assets/screenshot-4.png)
 
 ### 5. The settings page for this plugin
 
-![s5](https://raw.githubusercontent.com/alfacoins/woocommerce/master/assets/screenshot-5.jpg)
+![s5](https://raw.githubusercontent.com/alfacoins/woocommerce/master/assets/screenshot-5.png)
