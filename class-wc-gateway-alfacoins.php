@@ -6,7 +6,7 @@
     Author:      alfacoins
     Author URI:  https://github.com/alfacoins
 
-    Version:           0.4
+    Version:           0.5
     License:           Copyright 2013-2017 ALFAcoins Inc., MIT License
  */
 
@@ -112,11 +112,11 @@ function woocommerce_alfacoins_init() {
         return FALSE;
       }
 
-      if (!in_array(get_woocommerce_currency(), array('USD', 'EUR'))) {
+      /*if (!in_array(get_woocommerce_currency(), array('USD', 'EUR'))) {
         $this->log('    [Error] In is_valid_for_use not USD/EUR ');
 
         return FALSE;
-      }
+      }*/
 
       $this->log('    [Info] Plugin is valid for use.');
 
@@ -590,6 +590,7 @@ function woocommerce_alfacoins_init() {
         'amount' => $order->calculate_totals(), // must be float
         'order_id' => $order->get_order_number(),
         'description' => $description,
+        'currency' => $currency_code,
         'options' => array(
           'notificationURL' => $notification_url,
           'redirectURL' => $redirect_url,
@@ -924,7 +925,7 @@ function woocommerce_alfacoins_activate() {
 
   // Requirements met, activate the plugin
   if ($failed === FALSE) {
-    update_option('woocommerce_alfacoins_version', '0.4');
+    update_option('woocommerce_alfacoins_version', '0.5');
   }
   else {
     // Requirements not met, return an error message
