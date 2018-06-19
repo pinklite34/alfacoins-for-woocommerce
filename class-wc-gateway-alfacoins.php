@@ -2,11 +2,11 @@
 /*
     Plugin Name: ALFAcoins for WooCommerce
     Plugin URI:  https://wordpress.org/plugins/alfacoins-for-woocommerce/
-    Description: Enable your WooCommerce store to accept Bitcoin, Litecoin, Ethereum, Bitcoin Cash, Dash and Ripple with ALFAcoins.
+    Description: Enable your WooCommerce store to accept Bitcoin, Litecoin, Ethereum, Bitcoin Cash, Dash, Ripple and Litecoin Testnet with ALFAcoins.
     Author:      alfacoins
     Author URI:  https://github.com/alfacoins
 
-    Version:           0.5
+    Version:           0.6
     License:           Copyright 2013-2017 ALFAcoins Inc., MIT License
  */
 
@@ -41,7 +41,7 @@ function woocommerce_alfacoins_init() {
       $this->has_fields = FALSE;
       $this->order_button_text = __('Pay with ALFAcoins', 'alfacoins');
       $this->method_title = 'ALFAcoins';
-      $this->method_description = 'ALFAcoins allows you to accept bitcoin, litecoin, ethereum, bitcoin cash, dash and ripple payments on your WooCommerce store.';
+      $this->method_description = 'ALFAcoins allows you to accept bitcoin, litecoin, ethereum, bitcoin cash, dash, ripple and litecoin testnet payments on your WooCommerce store.';
 
       // Load the settings.
       $this->init_form_fields();
@@ -195,7 +195,8 @@ function woocommerce_alfacoins_init() {
             'ethereum' => 'Ethereum',
             'bitcoincash' => 'Bitcoin Cash',
             'dash' => 'Dash',
-            'ripple' => 'Ripple'
+            'ripple' => 'Ripple',
+            'litecointestnet' => 'Litecoin Testnet'
           ),
           'desc_tip' => TRUE,
         ),
@@ -357,7 +358,7 @@ function woocommerce_alfacoins_init() {
     public function validate_api_type_new_field($key) {
       $type = $this->get_option($key);
       if (isset($_POST[$this->plugin_id . $this->id . '_' . $key])) {
-        if (!in_array($_POST[$this->plugin_id . $this->id . '_' . $key], array('bitcoin', 'litecoin', 'ethereum', 'bitcoincash', 'dash', 'ripple'))) {
+        if (!in_array($_POST[$this->plugin_id . $this->id . '_' . $key], array('bitcoin', 'litecoin', 'ethereum', 'bitcoincash', 'dash', 'ripple', 'litecointestnet'))) {
           $type = 'bitcoin';
         } else {
           $type = $_POST[$this->plugin_id . $this->id . '_' . $key];
@@ -925,7 +926,7 @@ function woocommerce_alfacoins_activate() {
 
   // Requirements met, activate the plugin
   if ($failed === FALSE) {
-    update_option('woocommerce_alfacoins_version', '0.5');
+    update_option('woocommerce_alfacoins_version', '0.6');
   }
   else {
     // Requirements not met, return an error message

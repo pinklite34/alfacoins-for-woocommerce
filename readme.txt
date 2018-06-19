@@ -5,7 +5,7 @@ Tags: bitcoin, ethereum, litecoin, alfacoins, payment gateway, woocommerce, btc,
 Requires at least: 4.3.1
 Tested up to: 4.9.4
 Requires PHP: 5.2.4
-Stable tag: 0.5
+Stable tag: 0.6
 License: MIT
 License URI: https://raw.githubusercontent.com/alfacoins/woocommerce/master/license.txt
 
@@ -45,6 +45,9 @@ Download the plugin and upload it to your webserver via the [directions found at
 5. The settings page for this plugin
 
 == Changelog ==
+
+= 0.6 - 2018-06-19 =
+Litecoin Testnet support has been added for development and testing.
 
 = 0.5 - 2018-04-02 =
 * Now you can create orders in any currency (not only in USD / EUR / ...)
