@@ -1,19 +1,19 @@
 === ALFAcoins for WooCommerce ===
 Contributors: webt3ch
 Donate link: https://www.alfacoins.com/demo
-Tags: bitcoin, ethereum, litecoin, alfacoins, payment gateway, woocommerce, btc, xbt, ltc, eth, bitcoin cash, bitcoincash, dash, ripple, bch, xrp
+Tags: bitcoin, ethereum, litecoin, alfacoins, payment gateway, woocommerce, btc, xbt, ltc, eth, bitcoin cash, bitcoincash, dash, bch, xrp
 Requires at least: 4.3.1
 Tested up to: 4.9.4
 Requires PHP: 5.2.4
-Stable tag: 0.6
+Stable tag: 0.7
 License: MIT
 License URI: https://raw.githubusercontent.com/alfacoins/woocommerce/master/license.txt
 
-Enable your WooCommerce store to accept Ripple, Dash, Bitcoin Cash, Bitcoin, Litecoin and Ethereum with ALFAcoins!
+Enable your WooCommerce store to accept XRP, Dash, Bitcoin Cash, Bitcoin, Litecoin and Ethereum with ALFAcoins!
 
 == Description ==
 
-Start accepting Ripple, Dash, Bitcoin Cash, Bitcoin, Litecoin and Ethereum in 2 minutes with ALFAcoins!
+Start accepting XRP, Dash, Bitcoin Cash, Bitcoin, Litecoin and Ethereum in 2 minutes with ALFAcoins!
 In 2013, journalists Joshua Brustein and Timothy Lee expressed concern that bitcoin is problematic due to its high volatility.
 With ALFAcoins volatility is not a problem - get usual money payments or setup the CoinSplit and receive cryptocurrency up to 100%.
 
@@ -45,6 +45,9 @@ Download the plugin and upload it to your webserver via the [directions found at
 5. The settings page for this plugin
 
 == Changelog ==
+
+= 0.7 - 2018-07-18 =
+Cryptocurrency Ripple rebrands to XRP
 
 = 0.6 - 2018-06-19 =
 Litecoin Testnet support has been added for development and testing.

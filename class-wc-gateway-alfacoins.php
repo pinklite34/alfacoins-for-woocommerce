@@ -2,11 +2,11 @@
 /*
     Plugin Name: ALFAcoins for WooCommerce
     Plugin URI:  https://wordpress.org/plugins/alfacoins-for-woocommerce/
-    Description: Enable your WooCommerce store to accept Bitcoin, Litecoin, Ethereum, Bitcoin Cash, Dash, Ripple and Litecoin Testnet with ALFAcoins.
+    Description: Enable your WooCommerce store to accept Bitcoin, Litecoin, Ethereum, Bitcoin Cash, Dash, XRP and Litecoin Testnet with ALFAcoins.
     Author:      alfacoins
     Author URI:  https://github.com/alfacoins
 
-    Version:           0.6
+    Version:           0.7
     License:           Copyright 2013-2017 ALFAcoins Inc., MIT License
  */
 
@@ -41,7 +41,7 @@ function woocommerce_alfacoins_init() {
       $this->has_fields = FALSE;
       $this->order_button_text = __('Pay with ALFAcoins', 'alfacoins');
       $this->method_title = 'ALFAcoins';
-      $this->method_description = 'ALFAcoins allows you to accept bitcoin, litecoin, ethereum, bitcoin cash, dash, ripple and litecoin testnet payments on your WooCommerce store.';
+      $this->method_description = 'ALFAcoins allows you to accept bitcoin, litecoin, ethereum, bitcoin cash, dash, xrp and litecoin testnet payments on your WooCommerce store.';
 
       // Load the settings.
       $this->init_form_fields();
@@ -59,7 +59,7 @@ function woocommerce_alfacoins_init() {
       $this->api_password = $this->settings['api_password'];
       $this->api_type_new = $this->settings['api_type_new'];
       $this->api_url = $this->settings['api_url'];
-      
+
       // Define debugging & informational settings
       $this->debug_php_version = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
       $this->debug_plugin_version = get_option('woocommerce_alfacoins_version');
@@ -73,13 +73,13 @@ function woocommerce_alfacoins_init() {
 
       // Actions
       add_action('woocommerce_update_options_payment_gateways_' . $this->id, array(
-          $this,
-          'process_admin_options'
-        ));
+        $this,
+        'process_admin_options'
+      ));
       add_action('woocommerce_update_options_payment_gateways_' . $this->id, array(
-          $this,
-          'save_order_states'
-        ));
+        $this,
+        'save_order_states'
+      ));
 
 
       // Valid for use and IPN Callback
@@ -91,9 +91,9 @@ function woocommerce_alfacoins_init() {
         $this->enabled = 'yes';
         $this->log('    [Info] The plugin is ok to use.');
         add_action('woocommerce_api_wc_gateway_alfacoins', array(
-            $this,
-            'ipn_callback'
-          ));
+          $this,
+          'ipn_callback'
+        ));
       }
 
       $this->is_initialized = TRUE;
@@ -195,7 +195,7 @@ function woocommerce_alfacoins_init() {
             'ethereum' => 'Ethereum',
             'bitcoincash' => 'Bitcoin Cash',
             'dash' => 'Dash',
-            'ripple' => 'Ripple',
+            'xrp' => 'XRP',
             'litecointestnet' => 'Litecoin Testnet'
           ),
           'desc_tip' => TRUE,
@@ -358,14 +358,14 @@ function woocommerce_alfacoins_init() {
     public function validate_api_type_new_field($key) {
       $type = $this->get_option($key);
       if (isset($_POST[$this->plugin_id . $this->id . '_' . $key])) {
-        if (!in_array($_POST[$this->plugin_id . $this->id . '_' . $key], array('bitcoin', 'litecoin', 'ethereum', 'bitcoincash', 'dash', 'ripple', 'litecointestnet'))) {
+        if (!in_array($_POST[$this->plugin_id . $this->id . '_' . $key], array('bitcoin', 'litecoin', 'ethereum', 'bitcoincash', 'dash', 'xrp', 'litecointestnet'))) {
           $type = 'bitcoin';
         } else {
           $type = $_POST[$this->plugin_id . $this->id . '_' . $key];
         }
       }
       return sanitize_text_field($type);
-      
+
     }
 
     /**
@@ -926,7 +926,7 @@ function woocommerce_alfacoins_activate() {
 
   // Requirements met, activate the plugin
   if ($failed === FALSE) {
-    update_option('woocommerce_alfacoins_version', '0.6');
+    update_option('woocommerce_alfacoins_version', '0.7');
   }
   else {
     // Requirements not met, return an error message
