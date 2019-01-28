@@ -1,11 +1,11 @@
 # ALFAcoins for WooCommerce
 
-Enable your WooCommerce store to accept XRP, Dash, Bitcoin Cash, Bitcoin, Litecoin and Ethereum with ALFAcoins!
-Register for free at [ALFAcoins](https://www.alfacoins.com/user/register) to start accepting XRP, Dash, Bitcoin Cash, Bitcoin, Litecoin and Ethereum
+Enable your WooCommerce store to accept Bitcoin, Litecoin, Ethereum, Bitcoin Cash, Dash and XRP with ALFAcoins!
+Register for free at [ALFAcoins](https://www.alfacoins.com/user/register) to start accepting Bitcoin, Litecoin, Ethereum, Bitcoin Cash, Dash and XRP
 
 ## Description
 
-Start accepting XRP, Dash, Bitcoin Cash, Bitcoin, Litecoin and Ethereum in 2 minutes with ALFAcoins!
+Start accepting Bitcoin, Litecoin, Ethereum, Bitcoin Cash, Dash and XRP in 2 minutes with ALFAcoins!
 In 2013, journalists Joshua Brustein and Timothy Lee expressed concern that bitcoin is problematic due to its high volatility.
 With ALFAcoins volatility is not a problem - get usual money payments or setup the CoinSplit and receive cryptocurrency up to 100%.
 
