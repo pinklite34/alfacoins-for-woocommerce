@@ -5,7 +5,7 @@ Tags: bitcoin, ethereum, litecoin, alfacoins, payment gateway, woocommerce, btc,
 Requires at least: 4.3.1
 Tested up to: 4.9.4
 Requires PHP: 5.2.4
-Stable tag: 0.7
+Stable tag: 0.8
 License: MIT
 License URI: https://raw.githubusercontent.com/alfacoins/woocommerce/master/license.txt
 

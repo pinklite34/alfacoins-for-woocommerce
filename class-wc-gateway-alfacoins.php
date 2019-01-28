@@ -6,7 +6,7 @@
     Author:      alfacoins
     Author URI:  https://github.com/alfacoins
 
-    Version:           0.7
+    Version:           0.8
     License:           Copyright 2013-2017 ALFAcoins Inc., MIT License
  */
 
@@ -926,7 +926,7 @@ function woocommerce_alfacoins_activate() {
 
   // Requirements met, activate the plugin
   if ($failed === FALSE) {
-    update_option('woocommerce_alfacoins_version', '0.7');
+    update_option('woocommerce_alfacoins_version', '0.8');
   }
   else {
     // Requirements not met, return an error message
