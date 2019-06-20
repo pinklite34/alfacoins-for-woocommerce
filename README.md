@@ -24,7 +24,7 @@ Search for "ALFAcoins for WooCommerce" and click "Install Now"
 
 # Manual Installation
 
-Download the plugin and upload it to your webserver via the [directions found at the WordPress codex](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
+Download the plugin and upload it to your webserver via the [directions found at the WordPress codex](https://wordpress.org/support/article/managing-plugins/).
 
 # Screenshots
 
