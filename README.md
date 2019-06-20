@@ -5,9 +5,7 @@ Register for free at [ALFAcoins](https://www.alfacoins.com/user/register) to sta
 
 ## Description
 
-Start accepting Bitcoin, Litecoin, Ethereum, Bitcoin Cash, Dash and XRP in 2 minutes with ALFAcoins!
-In 2013, journalists Joshua Brustein and Timothy Lee expressed concern that bitcoin is problematic due to its high volatility.
-With ALFAcoins volatility is not a problem - get usual money payments or setup the CoinSplit and receive cryptocurrency up to 100%.
+ALFAcoins was founded in 2013 as a modern, multi-functional and secure cryptocurrency processing service. The company has proved to be a reliable partner for merchants and buyers by allowing them to trade using Bitcoin and other popular cryptocurrencies. To date, ALFAcoins has evolved into an electronic payment system and supports Bitcoin, Litecoin, Ethereum, Bitcoin Cash, Dash and XRP
 
 ## Installation
 

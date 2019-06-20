@@ -6,7 +6,7 @@
     Author:      alfacoins
     Author URI:  https://github.com/alfacoins
 
-    Version:           0.8
+    Version:           0.9
     License:           Copyright 2013-2017 ALFAcoins Inc., MIT License
  */
 
@@ -227,11 +227,18 @@ function woocommerce_alfacoins_init() {
           //'placeholder' => $this->get_return_url(),
           'desc_tip' => TRUE,
         ),
+        'hide_warning' => array(
+          'title' => __('Hide invoice deposit warning', 'alfacoins'),
+          'type' => 'checkbox',
+          'label' => __('Hide invoice deposit warning (e.g. warning about bitcoin low fee or requirement of xrp destination tag) (use at your own risk!)', 'alfacoins'),
+          'default' => 'no'
+        ),
         'support_details' => array(
           'title' => __('Plugin & Support Information', 'alfacoins'),
           'type' => 'title',
           'description' => sprintf(__('This plugin version is %s and your PHP version is %s. If you need assistance, please contact support@alfacoins.com.  Thank you for using ALFAcoins!', 'alfacoins'), get_option('woocommerce_alfacoins_version'), PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION),
         ),
+
       );
 
       $this->log('    [Info] Initialized form fields: ' . var_export($this->form_fields, TRUE));
@@ -555,9 +562,14 @@ function woocommerce_alfacoins_init() {
       // Redirect URL & Notification URL
 
       $this->log('    [Info] The variable redirect_url = ' . $redirect_url . '...');
-
+      $hide_warning = $this->get_option('hide_warning');
+      $this->log('    [Info] Hide warning option is set to: ' . $hide_warning . '...');
       $this->log('    [Info] Notification URL is now set to: ' . $notification_url . '...');
-
+      if ($hide_warning == 'yes') {
+        $hide_warning = 1;
+      } else {
+        $hide_warning = 0;
+      }
       // Setup the currency
       $currency_code = get_woocommerce_currency();
 
@@ -597,6 +609,7 @@ function woocommerce_alfacoins_init() {
           'redirectURL' => $redirect_url,
           'payerName' => $payerName,
           'payerEmail' => $payerEmail,
+          'hide_warning' => $hide_warning
         )
       );
 
@@ -926,7 +939,7 @@ function woocommerce_alfacoins_activate() {
 
   // Requirements met, activate the plugin
   if ($failed === FALSE) {
-    update_option('woocommerce_alfacoins_version', '0.8');
+    update_option('woocommerce_alfacoins_version', '0.9');
   }
   else {
     // Requirements not met, return an error message
