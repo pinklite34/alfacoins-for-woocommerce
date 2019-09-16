@@ -5,7 +5,7 @@ Tags: bitcoin, ethereum, litecoin, alfacoins, payment gateway, woocommerce, btc,
 Requires at least: 4.3.1
 Tested up to: 5.2.2
 Requires PHP: 5.2.4
-Stable tag: 0.9
+Stable tag: 0.10
 License: MIT
 License URI: https://raw.githubusercontent.com/alfacoins/woocommerce/master/license.txt
 
@@ -43,6 +43,9 @@ Download the plugin and upload it to your webserver via the [directions found at
 5. The settings page for this plugin
 
 == Changelog ==
+
+= 0.10 - 2019-09-16 =
+Fix order status change process when customer has paid more than needed.
 
 = 0.9 - 2019-06-20 =
 Added "Hide warning" option

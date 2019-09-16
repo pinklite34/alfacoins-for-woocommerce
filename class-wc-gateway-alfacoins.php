@@ -6,7 +6,7 @@
     Author:      alfacoins
     Author URI:  https://github.com/alfacoins
 
-    Version:           0.9
+    Version:           0.10
     License:           Copyright 2013-2017 ALFAcoins Inc., MIT License
  */
 
@@ -711,13 +711,15 @@ function woocommerce_alfacoins_init() {
           }
 
 
-          if ($_POST['received_amount'] == $order->calculate_totals()) {
-
+          if ($_POST['received_amount'] >= $order->calculate_totals()) {
+            if ($_POST['received_amount'] > $order->calculate_totals()) {
+              $order->add_order_note(__('ATTENTION! Received amount is more than required', 'alfacoins'));
+            }
             $order_states = $this->get_option('order_states');
 
             $new_order_status = $order_states['new'];
             $paid_status = $order_states['paid'];
-            $complete_status = $order_states['complete'];
+            $complete_status = $order_states['completed'];
 
             $checkStatus = $_POST['status'];
 
@@ -802,12 +804,15 @@ function woocommerce_alfacoins_init() {
                 $error_string = 'Unhandled invoice status: ' . $checkStatus;
                 $this->log("    [Warning] $error_string");
             }
+          } else {
+            $this->log('    [Info] Received amount is less than required');
+            $order->add_order_note(__('ATTENTION! Received amount is less than required', 'alfacoins'));
           }
         }
         else {
           $this->log('    [Warning] IPN response has invalid hash or currency');
         }
-
+        die('WC_ALFACOINS');
       }
       else {
         wp_die('Invalid IPN');
@@ -939,7 +944,7 @@ function woocommerce_alfacoins_activate() {
 
   // Requirements met, activate the plugin
   if ($failed === FALSE) {
-    update_option('woocommerce_alfacoins_version', '0.9');
+    update_option('woocommerce_alfacoins_version', '0.10');
   }
   else {
     // Requirements not met, return an error message
